@@ -5,16 +5,12 @@ pipeline {
     dockerImage = ''
   }
   agent any
-  tools {
-    maven 'Maven 3.3.9'
-    jdk 'jdk8'
-  } 
   stages {
-    stage('Cloning Git') {
-      steps {
-        git 'https://github.com/november-pain/spring-petclinic.git'
-      }
-    }
+     stage('Cloning Git') {
+       steps {
+         git 'https://github.com/november-pain/spring-petclinic.git'
+       }
+     }
     stage('Compile') {
        steps {
          sh './mvnw package' 
