@@ -4,7 +4,9 @@ pipeline {
     registryCredential = 'docker-hub'
     dockerImage = ''
   }
-  agent any
+  agent {
+    label: 'worker'
+  }  
   stages {
      stage('Cloning Git') {
        steps {
@@ -18,11 +20,7 @@ pipeline {
     }
     stage('Test') {
       steps {
-        sh '''
-        mvnw clean install
-        ls
-        pwd
-        ''' 
+        sh 'echo test'
       }
     }
     stage('Building Image') {
