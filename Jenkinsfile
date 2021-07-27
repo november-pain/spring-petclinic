@@ -6,7 +6,7 @@ pipeline {
   }
   agent { label: 'worker' }  
   stages {
-     stage('Cloning Git') {
+     stage('Clone Git') {
        steps {
          git 'https://github.com/november-pain/spring-petclinic.git'
        }
@@ -21,7 +21,7 @@ pipeline {
         sh 'echo test'
       }
     }
-    stage('Building Image') {
+    stage('Build Image') {
       steps{
         script {
           dockerImage = docker.build registry + ":latest"
